@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Submitted</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-orange-500">
+    <div class="flex flex-col items-center justify-center bg-orange-500 min-h-screen">
+        <div class="bg-white max-w-4xl shadow-lg rounded-2xl p-6 text-left w-full md:w-1/2">
+            <div class="flex justify-between">
+                <h2 class="text-[30px] font-bold text-gray-800">Step 3/4, <br><span class="text-2xl font-semibold">your verification code is:</span></h2>
+                <img src="logo.png" alt="Logo" class="w-50 h-20 mb-4">
+            </div>
+            <div class="mt-4 text-center">
+                <hr>
+                <br>
+                <p class="text-lg font-semibold text-gray-800">
+                        <span id="randomCode" class="font-bold text-[50px] text-orange-800"></span>
+                    </p>
+                    
+                    <script>
+                        function generateRandomCode() {
+                            let part1 = Math.floor(100 + Math.random() * 900); // Random 3-digit number
+                            let part2 = Math.floor(100 + Math.random() * 900); // Another random 3-digit number
+                            return `${part1}-${part2}`;
+                        }
+                    
+                        document.getElementById("randomCode").textContent = generateRandomCode();
+                    </script>
+                <br>
+                <hr>
+            </div>
+
+            <!-- Added Section for Registration Steps -->
+<!-- Added Section for Registration Steps -->
+<div class="mt-8 text-left">
+    <h3 class="text-3xl font-bold text-gray-800">Next Steps:</h3>
+    <ol class="list-decimal pl-5 mt-4 text-gray-600 text-xl">
+        <li>
+            Click on the provided link to join us on <strong>Microsoft Teams: </strong>
+            <a href="https://teams.live.com/l/invite/FEAEMFCC5xhN9_8UgE" class="inline-block bg-orange-800 text-white py-2 font-bold px-4 mt-2 rounded-lg hover:bg-orange-900">
+                Join Chat
+            </a>
+        </li>
+        <li class="mt-5">
+            Once connected, kindly share your registration code with us in the chat.
+        </li>
+        <li class="mt-5">
+            Our team will guide you through the next steps to finalize your registration.
+        </li>
+    </ol>
+</div>
+<!-- End Added Section -->
+
+            <!-- End Added Section -->
+        </div>
+    </div>
+</body>
+</html>

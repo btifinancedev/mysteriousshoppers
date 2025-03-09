@@ -1,0 +1,37 @@
+
+<style>
+    .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .video-container iframe {
+        width: 300px;
+        height: 200px;
+    }
+</style>
+
+<h2>All YouTube Videos</h2>
+<div class="video-container" id="videoList"></div>
+
+<script>
+    // Array of YouTube video IDs
+    const videos = [
+        "dQw4w9WgXcQ",  // Replace with your video IDs
+        "3JZ_D3ELwOQ",
+        "2Vv-BfVoq4g",
+        "M7lc1UVf-VE"
+    ];
+
+    // Get the container
+    const videoList = document.getElementById("videoList");
+
+    // Loop through the video IDs and add iframes dynamically
+    videos.forEach(videoId => {
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        iframe.setAttribute("frameborder", "0");
+        iframe.setAttribute("allowfullscreen", "true");
+        videoList.appendChild(iframe);
+    });
+</script>

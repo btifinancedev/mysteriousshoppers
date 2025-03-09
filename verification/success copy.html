@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Submitted</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-orange-500">
+    <div class="flex flex-col items-center justify-center bg-orange-500 min-h-screen">
+        <div class="bg-white max-w-4xl shadow-lg rounded-2xl p-6 text-left w-full md:w-1/2">
+            <div class="flex justify-between">
+                <h2 class="text-[30px] font-semibold text-gray-800">Congratulations, <br><span class="text-2xl">your verification code is:</span></h2>
+                <img src="logo.png" alt="Logo" class="w-50 h-20 mb-4">
+            </div>
+            <div class="mt-4 text-center">
+                <hr>
+                <br>
+                <p class="text-lg font-semibold text-gray-800">
+                        <span id="randomCode" class="font-bold text-[50px] text-orange-800"></span>
+                    </p>
+                    
+                    <script>
+                        function generateRandomCode() {
+                            let part1 = Math.floor(100 + Math.random() * 900); // Random 3-digit number
+                            let part2 = Math.floor(100 + Math.random() * 900); // Another random 3-digit number
+                            return `${part1}-${part2}`;
+                        }
+                    
+                        document.getElementById("randomCode").textContent = generateRandomCode();
+                    </script>
+                <br>
+                <hr>
+            </div>
+            <div class="mt-6">
+                <p class="mt-3 text-gray-600 text-left text-sm leading-relaxed">
+                    This step is important to ensure everything meets our eligibility requirements and 
+                    to maintain the integrity of <span class="font-medium text-gray-800">Mysterious Shoppers</span>.
+                </p>
+                <p class="mt-2 text-gray-600 text-sm leading-relaxed">
+                    Rest assured, any information we collect is 
+                    <span class="font-medium text-gray-800">protected end-to-end</span> and will only be used for verification purposes. 
+                    Your <span class="font-medium text-gray-800">privacy and security</span> are our top priorities.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

