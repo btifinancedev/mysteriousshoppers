@@ -6,19 +6,9 @@
     <title>Mystery Shoppers</title>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#f97316',
-              dark: '#1f2937',
-              light: '#f3f4f6'
-            },
-          },
-        }
-      }
-    </script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/@headlessui/react@latest/dist/headlessui.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.16/framer-motion.umd.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17041472958"></script>
     <script>
@@ -27,17 +17,27 @@
       gtag('js', new Date());
       gtag('config', 'AW-17041472958');
     </script>
+    <style>
+      .fade-in {
+        animation: fadeIn 1.2s ease-in forwards;
+      }
+
+      @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+    </style>
   </head>
-  <body class="font-sans bg-gray-900 text-gray-800">
+  <body class="font-sans bg-white text-gray-800">
     <!-- Header -->
-    <header class="bg-dark shadow sticky top-0 z-50">
-      <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
-        <a href="/">
-          <img width="150" src="logo.png" alt="Mystery Shoppers Logo" />
-        </a>
+    <header class="bg-gray-900 shadow sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-2xl font-bold text-orange-500">
+          <a href="/"><img width="150px" src="logo.png" alt="Mysterious Shoppers Logo" /></a>
+        </div>
         <a
           href="tel:+12052820172"
-          class="bg-primary hover:bg-orange-600 text-white px-5 py-2 rounded-xl font-semibold transition"
+          class="bg-orange-500 text-white px-6 py-2 rounded-lg font-bold transition-all duration-300 hover:bg-orange-600 text-center w-full md:w-auto"
         >
           Call Us: +1 (205) 282-0172
         </a>
@@ -46,22 +46,25 @@
 
     <!-- Hero Section -->
     <section
-      class="bg-cover bg-center h-[300px] md:h-[400px] relative"
+      class="bg-cover bg-center h-64 md:h-80 fade-in"
       style="background-image: url('https://www.shutterstock.com/image-photo/banner-cover-asian-woman-using-600nw-1922516153.jpg');"
     >
-      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <h1 class="text-white text-3xl md:text-5xl font-bold text-center px-4">
+      <div
+        class="h-full bg-black bg-opacity-60 flex items-center justify-center text-center px-4"
+      >
+        <h1 class="text-white text-3xl md:text-5xl font-bold leading-tight">
           Mystery Shoppers — U.S. and Canada (Independent Contractor)
         </h1>
       </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12 space-y-12">
-      <div class="bg-light rounded-2xl shadow-xl p-6 max-w-5xl mx-auto">
-        <div class="aspect-w-16 aspect-h-9 mb-6">
+    <!-- Content Section -->
+    <div class="container mx-auto px-4 py-12 flex flex-col gap-12 items-center">
+      <!-- Main Content -->
+      <main class="bg-gray-100 w-full max-w-4xl rounded-xl p-8 shadow-xl fade-in">
+        <div class="mb-6 rounded overflow-hidden">
           <iframe
-            class="w-full h-full rounded-xl"
+            class="w-full h-64 md:h-80 rounded-lg"
             src="https://www.youtube.com/embed/d3pCXI5fdK8"
             title="YouTube video"
             frameborder="0"
@@ -69,67 +72,61 @@
             allowfullscreen
           ></iframe>
         </div>
-        <h2 class="text-3xl font-bold mb-4 text-dark">Join the Mysterious Shoppers Team!</h2>
-        <p class="mb-4">
-          Mysterious Shoppers, a member company of the CX Group, works with leading brands across the U.S. and Canada.
-        </p>
-        <p class="mb-4">
-          Once you complete a free shopper profile, you can access assignments via the CX Group Shopper Hub. Click "Become A Shopper" to get started.
-        </p>
-        <p class="mb-4">
-          With nearly 35 years of experience and an A+ rating from the Better Business Bureau, we are one of North America's top customer experience firms.
-        </p>
+        <h2 class="text-2xl font-bold mb-4">Join the Mysterious Shoppers Mystery Shopping Team!</h2>
+        <p class="mb-4">Mysterious Shoppers, a member company of the CX Group, works with leading brands across the U.S. and Canada.</p>
+        <p class="mb-4">Mysterious Shoppers assignments are available on the CX Group Shopper Hub, which you can access once you complete a free shopper profile. When you click on "Become A Shopper", you will be transferred to our CX Group Shopper Hub apply page.</p>
+        <p class="mb-4">Our nearly 35 years of experience and A+ rating from the Better Business Bureau makes us one of the leading customer experience firms in North America.</p>
 
-        <h3 class="text-2xl font-semibold mt-8 mb-4 text-dark">How It Works</h3>
-        <p class="mb-4">
-          As an Independent Contractor, you’ll choose assignments that suit your schedule and location. Opportunities are available across North America.
-        </p>
+        <h3 class="text-xl font-semibold mt-8 mb-4">How being a Mystery Shopper works:</h3>
+        <p class="mb-4">Mysterious Shoppers mystery shoppers/secret shoppers work as Independent Contractors. Work is made available on an assignment-by-assignment basis. As an Independent Contractor, you have full choice in deciding to accept or decline assignments as they become available. Mysterious Shoppers offers shopping assignments across North America and we welcome you to join our national independent contractor network. Your first step to becoming a mystery shopper is to create a free shopper profile account.</p>
 
-        <h3 class="text-2xl font-semibold mt-8 mb-4 text-dark">Ideal Traits of a Mystery Shopper</h3>
+        <h3 class="text-xl font-semibold mt-8 mb-4">What Makes a Successful Mystery Shopper?</h3>
         <ul class="list-disc pl-6 space-y-2">
-          <li>Great communication skills</li>
-          <li>Attention to detail</li>
-          <li>Good time-management</li>
-          <li>Access to a smartphone or computer</li>
-          <li>Reliable internet and transportation</li>
+          <li>Enjoy interacting with people.</li>
+          <li>Have excellent observation skills.</li>
+          <li>Are capable of remembering small details.</li>
+          <li>Have good time-management skills.</li>
+          <li>Have good written and verbal communication skills.</li>
+          <li>Have a computer, tablet, or smartphone.</li>
+          <li>Have reliable internet access and transportation.</li>
         </ul>
 
-        <h3 class="text-2xl font-semibold mt-8 mb-4 text-dark">Benefits</h3>
+        <h3 class="text-xl font-semibold mt-8 mb-4">Benefits of Secret Shopping with Mysterious Shoppers:</h3>
         <ul class="list-disc pl-6 space-y-2">
-          <li>Earn extra income</li>
-          <li>Meal, tax, and gratuity reimbursement on restaurant assignments</li>
-          <li>Flexible scheduling</li>
-          <li>Make an impact in improving customer service</li>
+          <li>Secret shopping enables you to earn extra income.</li>
+          <li>Restaurant assignments include meal, tax and gratuity reimbursement.</li>
+          <li>Access to a variety of secret shopping assignments across the U.S. and Canada.</li>
+          <li>Shopping assignments flexibly fit your schedule.</li>
+          <li>Your feedback improves customer service in many industries.</li>
         </ul>
 
-        <div class="mt-8">
+        <div class="mt-10 text-center">
           <a
             href="form.html"
-            class="bg-primary hover:bg-orange-600 text-white px-6 py-3 rounded-xl text-lg font-semibold transition"
+            class="bg-orange-500 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-orange-600 transition duration-300"
           >
-            Become a Shopper
+            BECOME A SHOPPER
           </a>
         </div>
-      </div>
+      </main>
 
-      <!-- Video Gallery -->
-      <div class="bg-gray-200 rounded-2xl shadow-xl p-6 max-w-5xl mx-auto">
-        <h3 class="text-2xl font-semibold mb-4 text-dark">More About Mystery Shopping</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/GdPq1Uf-p1E" frameborder="0" allowfullscreen></iframe>
-          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/5wc8PDVqRS8" frameborder="0" allowfullscreen></iframe>
-          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/Mox75fAbsgU" frameborder="0" allowfullscreen></iframe>
+      <!-- Extra Videos Section -->
+      <main class="bg-gray-100 w-full max-w-4xl rounded-xl p-8 shadow-xl fade-in">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/GdPq1Uf-p1E" allowfullscreen></iframe>
+          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/5wc8PDVqRS8" allowfullscreen></iframe>
+          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/Mox75fAbsgU" allowfullscreen></iframe>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-8 mt-12">
-      <div class="container mx-auto px-4 text-center space-y-2">
-        <p>Contact Us:</p>
-        <p>Phone: <a href="tel:+12052820172" class="underline">+1 (205) 282-0172</a></p>
-        <p>Email: <a href="mailto:jobs@myteriousshoppers.com" class="underline">jobs@myteriousshoppers.com</a></p>
-        <p class="text-sm mt-4">&copy; 2025 Mysterious Shoppers. All rights reserved. | Privacy Policy | Cookie Policy</p>
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm">Contact Us:</p>
+        <p class="text-sm">Phone: <a href="tel:+12052820172" class="underline">+1 (205) 282-0172</a></p>
+        <p class="text-sm">Email: <a href="mailto:jobs@myteriousshoppers.com" class="underline">jobs@myteriousshoppers.com</a></p>
+        <p class="text-sm mt-6">&copy; 2025 Mysterious Shoppers. All rights reserved. | Privacy Policy | Cookie Policy</p>
       </div>
     </footer>
   </body>
