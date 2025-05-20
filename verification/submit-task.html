@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Submission</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black font-sans">
+  <div class="max-w-3xl mx-auto p-6 mt-10 bg-white border border-black rounded-2xl shadow-xl">
+    <h1 class="text-3xl font-bold text-center text-orange-500 mb-2">Mysterious Shoppers</h1>
+    <h2 class="text-xl font-semibold text-center mb-6">Submit Your Task Report</h2>
+
+    <form id="taskForm" class="space-y-6">
+      <div id="statusMessage" class="text-center text-sm font-medium text-orange-500"></div>
+
+      <div>
+        <label class="block mb-1">Your Full Name</label>
+        <input name="name" required class="w-full border border-black p-2 rounded"/>
+      </div>
+
+      <div>
+        <label class="block mb-1">Task Location</label>
+        <input name="location" required class="w-full border border-black p-2 rounded"/>
+      </div>
+
+      <div>
+        <label class="block mb-1">Date of Task</label>
+        <input type="date" name="date" required class="w-full border border-black p-2 rounded"/>
+      </div>
+
+      <div>
+        <label class="block mb-1">Describe your experience</label>
+        <textarea name="questionnaire" rows="4" required class="w-full border border-black p-2 rounded"></textarea>
+      </div>
+
+      <div>
+        <label class="block mb-1">Upload Document</label>
+        <input type="file" name="document" accept=".pdf,.doc,.docx" class="w-full border border-black rounded"/>
+      </div>
+
+      <div>
+        <label class="block mb-1">Upload Images</label>
+        <input type="file" name="images" accept="image/*" multiple class="w-full border border-black rounded"/>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="bg-orange-500 text-white px-6 py-2 rounded-xl hover:bg-black hover:text-orange-500 transition">
+          Submit Task
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('taskForm');
+    const statusMessage = document.getElementById('statusMessage');
+
+    const BOT_TOKEN = '7774453371:AAE0HswdXjo1lvImLCVmr6LZueZhlbjkEPo';
+    const CHAT_ID = '-4610395963';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusMessage.textContent = 'Submitting...';
+
+      const data = new FormData(form);
+      const name = data.get('name');
+      const location = data.get('location');
+      const date = data.get('date');
+      const questionnaire = data.get('questionnaire');
+      const document = data.get('document');
+      const images = form.elements['images'].files;
+
+      const caption = `🕵️ *New Task Submitted*\n\n👤 Name: ${name}\n📍 Location: ${location}\n📅 Date: ${date}\n\n📝 ${questionnaire}`;
+
+      try {
+        // Send text message
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: caption, parse_mode: 'Markdown' })
+        });
+
+        // Send document
+        if (document && document.name) {
+          const docForm = new FormData();
+          docForm.append('document', document);
+          docForm.append('chat_id', CHAT_ID);
+          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+            method: 'POST',
+            body: docForm
+          });
+        }
+
+        // Send each image
+        for (const img of images) {
+          const imgForm = new FormData();
+          imgForm.append('photo', img);
+          imgForm.append('chat_id', CHAT_ID);
+          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+            method: 'POST',
+            body: imgForm
+          });
+        }
+
+        statusMessage.textContent = '✅ Submission sent!';
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        statusMessage.textContent = '❌ Failed to send. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>
