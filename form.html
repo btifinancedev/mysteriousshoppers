@@ -48,6 +48,25 @@
           })
           .catch((error) => console.error('Error:', error));
       }
+
+      function updateStateLabel() {
+        const countrySelect = document.getElementById('country');
+        const stateLabel = document.getElementById('state-label');
+        const selectedCountry = countrySelect.value;
+
+        if (selectedCountry === 'USA') {
+          stateLabel.textContent = 'State';
+        } else if (selectedCountry === 'Canada') {
+          stateLabel.textContent = 'Province';
+        } else if (selectedCountry === 'Australia') {
+          stateLabel.textContent = 'State/Territory';
+        }
+      }
+
+      // Initialize the label on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateStateLabel();
+      });
     </script>
   </head>
   <body class="font-sans bg-gray-900 text-gray-800">
@@ -93,7 +112,7 @@
       >
         <h2 class="text-2xl font-bold mb-4 text-center">
           Mysterious Shoppers, a member company of the CX Group, works with
-          leading brands across the U.S. and Canada.
+          leading brands across the U.S., Canada, and Australia.
         </h2>
 
         <h3 class="text-xl font-semibold mt-8 mb-4">Sign Up Today</h3>
@@ -142,7 +161,7 @@
           </div>
           <!-- State -->
           <div>
-            <label for="state" class="block text-sm font-semibold mb-1"
+            <label for="state" id="state-label" class="block text-sm font-semibold mb-1"
               >State</label
             >
             <input
@@ -175,10 +194,12 @@
               id="country"
               name="Country"
               class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500"
+              onchange="updateStateLabel()"
               required
             >
               <option value="USA">United States</option>
               <option value="Canada">Canada</option>
+              <option value="Australia">Australia</option>
             </select>
           </div>
           <!-- Phone -->
