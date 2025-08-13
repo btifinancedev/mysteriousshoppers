@@ -10,20 +10,17 @@
     <script src="https://unpkg.com/@headlessui/react@latest/dist/headlessui.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.16/framer-motion.umd.js"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17082293645">
-</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17082293645"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-17082293645');
 </script>
     <style>
       .fade-in {
         animation: fadeIn 1.2s ease-in forwards;
       }
-
       @keyframes fadeIn {
         0% { opacity: 0; transform: translateY(20px); }
         100% { opacity: 1; transform: translateY(0); }
@@ -52,11 +49,18 @@
       style="background-image: url('https://www.shutterstock.com/image-photo/banner-cover-asian-woman-using-600nw-1922516153.jpg');"
     >
       <div
-        class="h-full bg-black bg-opacity-60 flex items-center justify-center text-center px-4"
+        class="h-full bg-black bg-opacity-60 flex flex-col items-center justify-center text-center px-4"
       >
-        <h1 class="text-white text-3xl md:text-5xl font-bold leading-tight">
-          Mystery Shoppers — U.S. and Canada (Independent Contractor)
+        <h1 class="text-white text-3xl md:text-5xl font-bold leading-tight mb-4">
+          Mystery Shoppers — U.S., Canada, and Australia (Independent Contractor)
         </h1>
+
+        <!-- Country Flags -->
+        <div class="flex gap-4 mt-2 fade-in">
+          <img src="https://flagcdn.com/us.svg" alt="USA Flag" class="w-10 h-7 shadow-md rounded-sm" />
+          <img src="https://flagcdn.com/ca.svg" alt="Canada Flag" class="w-10 h-7 shadow-md rounded-sm" />
+          <img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="w-10 h-7 shadow-md rounded-sm" />
+        </div>
       </div>
     </section>
 
@@ -75,12 +79,12 @@
           ></iframe>
         </div>
         <h2 class="text-2xl font-bold mb-4">Join the Mysterious Shoppers Mystery Shopping Team!</h2>
-        <p class="mb-4">Mysterious Shoppers, a member company of the CX Group, works with leading brands across the U.S. and Canada.</p>
+        <p class="mb-4">Mysterious Shoppers, a member company of the CX Group, works with leading brands across the U.S., Canada, and Australia.</p>
         <p class="mb-4">Mysterious Shoppers assignments are available on the CX Group Shopper Hub, which you can access once you complete a free shopper profile. When you click on "Become A Shopper", you will be transferred to our CX Group Shopper Hub apply page.</p>
-        <p class="mb-4">Our nearly 35 years of experience and A+ rating from the Better Business Bureau makes us one of the leading customer experience firms in North America.</p>
+        <p class="mb-4">Our nearly 35 years of experience and A+ rating from the Better Business Bureau makes us one of the leading customer experience firms in North America and Australia.</p>
 
         <h3 class="text-xl font-semibold mt-8 mb-4">How being a Mystery Shopper works:</h3>
-        <p class="mb-4">Mysterious Shoppers mystery shoppers/secret shoppers work as Independent Contractors. Work is made available on an assignment-by-assignment basis. As an Independent Contractor, you have full choice in deciding to accept or decline assignments as they become available. Mysterious Shoppers offers shopping assignments across North America and we welcome you to join our national independent contractor network. Your first step to becoming a mystery shopper is to create a free shopper profile account.</p>
+        <p class="mb-4">Mysterious Shoppers mystery shoppers/secret shoppers work as Independent Contractors. Work is made available on an assignment-by-assignment basis. As an Independent Contractor, you have full choice in deciding to accept or decline assignments as they become available. Mysterious Shoppers offers shopping assignments across North America and Australia, and we welcome you to join our international independent contractor network. Your first step to becoming a mystery shopper is to create a free shopper profile account.</p>
 
         <h3 class="text-xl font-semibold mt-8 mb-4">What Makes a Successful Mystery Shopper?</h3>
         <ul class="list-disc pl-6 space-y-2">
@@ -97,7 +101,7 @@
         <ul class="list-disc pl-6 space-y-2">
           <li>Secret shopping enables you to earn extra income.</li>
           <li>Restaurant assignments include meal, tax and gratuity reimbursement.</li>
-          <li>Access to a variety of secret shopping assignments across the U.S. and Canada.</li>
+          <li>Access to a variety of secret shopping assignments across the U.S., Canada, and Australia.</li>
           <li>Shopping assignments flexibly fit your schedule.</li>
           <li>Your feedback improves customer service in many industries.</li>
         </ul>
