@@ -3,20 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mystery Shoppers</title>
+    <title>Mystery Shoppers - Earn Extra Income as a Secret Shopper</title>
+    <meta name="description" content="Join the $3.2 billion mystery shopping industry. Earn $200-$300 weekly as an independent contractor with flexible scheduling across the US, Canada, and Australia.">
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/@headlessui/react@latest/dist/headlessui.umd.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.16/framer-motion.umd.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#f97316',
+              secondary: '#1f2937'
+            }
+          }
+        }
+      }
+    </script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17082293645"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-17082293645');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17082293645"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17082293645');
+    </script>
     <style>
       .fade-in {
         animation: fadeIn 1.2s ease-in forwards;
@@ -25,115 +35,382 @@
         0% { opacity: 0; transform: translateY(20px); }
         100% { opacity: 1; transform: translateY(0); }
       }
+      .slide-in {
+        animation: slideIn 0.8s ease-out forwards;
+      }
+      @keyframes slideIn {
+        0% { opacity: 0; transform: translateX(-30px); }
+        100% { opacity: 1; transform: translateX(0); }
+      }
+      .counter {
+        font-variant-numeric: tabular-nums;
+      }
     </style>
   </head>
-  <body class="font-sans bg-white text-gray-800">
+  <body class="font-sans bg-white text-gray-800 leading-relaxed">
     <!-- Header -->
-    <header class="bg-gray-900 shadow sticky top-0 z-50">
+    <header class="bg-secondary shadow-lg sticky top-0 z-50">
       <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="text-2xl font-bold text-orange-500">
+        <div class="text-2xl font-bold text-primary">
           <a href="/"><img width="150px" src="logo.png" alt="Mysterious Shoppers Logo" /></a>
         </div>
-        <a
-          href="tel:+12052820172"
-          class="bg-orange-500 text-white px-6 py-2 rounded-lg font-bold transition-all duration-300 hover:bg-orange-600 text-center w-full md:w-auto"
-        >
-          Call Us: +1 (205) 282-0172
-        </a>
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <a
+            href="tel:+19453346439"
+            class="bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-orange-600 text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+          >
+            📞 Call: +1 (945) 334-6439
+          </a>
+          <a
+            href="#apply"
+            class="bg-white text-primary border-2 border-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-white text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+          >
+            Apply Now
+          </a>
+        </div>
       </div>
     </header>
 
     <!-- Hero Section -->
-    <section
-      class="bg-cover bg-center h-64 md:h-80 fade-in"
-      style="background-image: url('https://www.shutterstock.com/image-photo/banner-cover-asian-woman-using-600nw-1922516153.jpg');"
-    >
-      <div
-        class="h-full bg-black bg-opacity-60 flex flex-col items-center justify-center text-center px-4"
-      >
-        <h1 class="text-white text-3xl md:text-5xl font-bold leading-tight mb-4">
-          Mystery Shoppers — U.S., Canada, and Australia (Independent Contractor)
-        </h1>
+    <section class="relative bg-gradient-to-br from-secondary via-gray-800 to-gray-900 text-white overflow-hidden">
+      <div class="absolute inset-0 bg-black opacity-20"></div>
+      <div class="container mx-auto px-4 py-16 md:py-24 relative z-10">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Earn <span class="text-primary">$200-$300</span> Weekly as a Mystery Shopper
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-200">
+            Join the $3.2 billion mystery shopping industry across the U.S., Canada, and Australia
+          </p>
+          
+          <!-- Country Flags -->
+          <div class="flex justify-center gap-6 mb-8 fade-in">
+            <div class="text-center">
+              <img src="https://flagcdn.com/us.svg" alt="USA Flag" class="w-12 h-8 mx-auto shadow-lg rounded-sm mb-2" />
+              <span class="text-sm">United States</span>
+            </div>
+            <div class="text-center">
+              <img src="https://flagcdn.com/ca.svg" alt="Canada Flag" class="w-12 h-8 mx-auto shadow-lg rounded-sm mb-2" />
+              <span class="text-sm">Canada</span>
+            </div>
+            <div class="text-center">
+              <img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="w-12 h-8 mx-auto shadow-lg rounded-sm mb-2" />
+              <span class="text-sm">Australia</span>
+            </div>
+          </div>
 
-        <!-- Country Flags -->
-        <div class="flex gap-4 mt-2 fade-in">
-          <img src="https://flagcdn.com/us.svg" alt="USA Flag" class="w-10 h-7 shadow-md rounded-sm" />
-          <img src="https://flagcdn.com/ca.svg" alt="Canada Flag" class="w-10 h-7 shadow-md rounded-sm" />
-          <img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="w-10 h-7 shadow-md rounded-sm" />
+          <a
+            href="#apply"
+            class="inline-block bg-primary text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+          >
+            Start Earning Today - It's Free!
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Content Section -->
-    <div class="container mx-auto px-4 py-12 flex flex-col gap-12 items-center">
-      <!-- Main Content -->
-      <main class="bg-gray-100 w-full max-w-4xl rounded-xl p-8 shadow-xl fade-in">
-        <div class="mb-6 rounded overflow-hidden">
-          <iframe
-            class="w-full h-64 md:h-80 rounded-lg"
-            src="https://www.youtube.com/embed/d3pCXI5fdK8"
-            title="YouTube video"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+    <!-- Industry Stats Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">Industry-Leading Opportunity</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 slide-in">
+              <div class="text-4xl md:text-5xl font-bold text-primary mb-4 counter">$3.2B</div>
+              <h3 class="text-xl font-semibold mb-2">Market Size by 2032</h3>
+              <p class="text-gray-600">Growing at 4.91% annually in the expanding mystery shopping industry</p>
+            </div>
+            <div class="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 slide-in">
+              <div class="text-4xl md:text-5xl font-bold text-primary mb-4 counter">44%</div>
+              <h3 class="text-xl font-semibold mb-2">North America Market Share</h3>
+              <p class="text-gray-600">Largest regional market with abundant opportunities</p>
+            </div>
+            <div class="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 slide-in">
+              <div class="text-4xl md:text-5xl font-bold text-primary mb-4 counter">35+</div>
+              <h3 class="text-xl font-semibold mb-2">Years Experience</h3>
+              <p class="text-gray-600">A+ BBB rating and trusted industry leader</p>
+            </div>
+          </div>
         </div>
-        <h2 class="text-2xl font-bold mb-4">Join the Mysterious Shoppers Mystery Shopping Team!</h2>
-        <p class="mb-4">Mysterious Shoppers, a member company of the CX Group, works with leading brands across the U.S., Canada, and Australia.</p>
-        <p class="mb-4">Mysterious Shoppers assignments are available on the CX Group Shopper Hub, which you can access once you complete a free shopper profile. When you click on "Become A Shopper", you will be transferred to our CX Group Shopper Hub apply page.</p>
-        <p class="mb-4">Our nearly 35 years of experience and A+ rating from the Better Business Bureau makes us one of the leading customer experience firms in North America and Australia.</p>
+      </div>
+    </section>
 
-        <h3 class="text-xl font-semibold mt-8 mb-4">How being a Mystery Shopper works:</h3>
-        <p class="mb-4">Mysterious Shoppers mystery shoppers/secret shoppers work as Independent Contractors. Work is made available on an assignment-by-assignment basis. As an Independent Contractor, you have full choice in deciding to accept or decline assignments as they become available. Mysterious Shoppers offers shopping assignments across North America and Australia, and we welcome you to join our international independent contractor network. Your first step to becoming a mystery shopper is to create a free shopper profile account.</p>
-
-        <h3 class="text-xl font-semibold mt-8 mb-4">What Makes a Successful Mystery Shopper?</h3>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Enjoy interacting with people.</li>
-          <li>Have excellent observation skills.</li>
-          <li>Are capable of remembering small details.</li>
-          <li>Have good time-management skills.</li>
-          <li>Have good written and verbal communication skills.</li>
-          <li>Have a computer, tablet, or smartphone.</li>
-          <li>Have reliable internet access and transportation.</li>
-        </ul>
-
-        <h3 class="text-xl font-semibold mt-8 mb-4">Benefits of Secret Shopping with Mysterious Shoppers:</h3>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Secret shopping enables you to earn extra income.</li>
-          <li>Restaurant assignments include meal, tax and gratuity reimbursement.</li>
-          <li>Access to a variety of secret shopping assignments across the U.S., Canada, and Australia.</li>
-          <li>Shopping assignments flexibly fit your schedule.</li>
-          <li>Your feedback improves customer service in many industries.</li>
-        </ul>
-
-        <div class="mt-10 text-center">
-          <a
-            href="form.html"
-            class="bg-orange-500 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-orange-600 transition duration-300"
-          >
-            BECOME A SHOPPER
-          </a>
+    <!-- How It Works Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">How Mystery Shopping Works</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center fade-in">
+              <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+              <h3 class="text-xl font-semibold mb-3">Sign Up Free</h3>
+              <p class="text-gray-600">Create your shopper profile - completely free with no hidden fees</p>
+            </div>
+            <div class="text-center fade-in">
+              <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+              <h3 class="text-xl font-semibold mb-3">Choose Assignments</h3>
+              <p class="text-gray-600">Browse available shops and select ones that fit your schedule</p>
+            </div>
+            <div class="text-center fade-in">
+              <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+              <h3 class="text-xl font-semibold mb-3">Shop & Evaluate</h3>
+              <p class="text-gray-600">Visit businesses as a regular customer and document your experience</p>
+            </div>
+            <div class="text-center fade-in">
+              <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+              <h3 class="text-xl font-semibold mb-3">Get Paid</h3>
+              <p class="text-gray-600">Submit your report and receive payment via PayPal or direct deposit</p>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
+    </section>
 
-      <!-- Extra Videos Section -->
-      <main class="bg-gray-100 w-full max-w-4xl rounded-xl p-8 shadow-xl fade-in">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/GdPq1Uf-p1E" allowfullscreen></iframe>
-          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/5wc8PDVqRS8" allowfullscreen></iframe>
-          <iframe class="w-full h-48 rounded-lg" src="https://www.youtube.com/embed/Mox75fAbsgU" allowfullscreen></iframe>
+    <!-- Earnings Potential Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-orange-600 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-8">Your Earning Potential</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white bg-opacity-20 p-8 rounded-xl backdrop-blur-sm">
+              <h3 class="text-2xl font-bold mb-4">Per Assignment</h3>
+              <div class="text-4xl font-bold mb-2">$12 - $100+</div>
+              <p class="text-lg">Restaurant visits include meal reimbursement plus payment</p>
+            </div>
+            <div class="bg-white bg-opacity-20 p-8 rounded-xl backdrop-blur-sm">
+              <h3 class="text-2xl font-bold mb-4">Weekly Potential</h3>
+              <div class="text-4xl font-bold mb-2">$200 - $300</div>
+              <p class="text-lg">Regular shoppers earn consistently with flexible scheduling</p>
+            </div>
+          </div>
+          <p class="text-xl mb-8">Work as an independent contractor with complete schedule flexibility</p>
         </div>
-      </main>
-    </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">See How It Works</h2>
+          <div class="bg-white rounded-xl p-8 shadow-xl fade-in">
+            <div class="mb-6 rounded-lg overflow-hidden">
+              <iframe
+                class="w-full h-64 md:h-80 rounded-lg"
+                src="https://www.youtube.com/embed/d3pCXI5fdK8"
+                title="Mystery Shopping Explained"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-center">Join the Mysterious Shoppers Team!</h3>
+            <p class="text-lg text-gray-700 text-center">Watch this video to learn exactly how mystery shopping works and how you can start earning extra income today.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">What Makes a Successful Mystery Shopper?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="fade-in">
+              <h3 class="text-2xl font-bold mb-6 text-primary">Basic Requirements</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Must be 18+ years old (21+ for alcohol-related assignments)</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Reliable internet access and transportation</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Computer, tablet, or smartphone for reporting</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Legal resident of US, Canada, or Australia</span>
+                </li>
+              </ul>
+            </div>
+            <div class="fade-in">
+              <h3 class="text-2xl font-bold mb-6 text-primary">Key Skills</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Excellent observation and attention to detail</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Strong written and verbal communication</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Good time management and organization</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-primary text-xl">✓</span>
+                  <span>Enjoy interacting with people naturally</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">Why Choose Mystery Shopping?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 fade-in">
+              <div class="text-primary text-3xl mb-4">💰</div>
+              <h3 class="text-xl font-semibold mb-3">Flexible Income</h3>
+              <p class="text-gray-600">Earn extra money on your own schedule with assignments that fit your lifestyle</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 fade-in">
+              <div class="text-primary text-3xl mb-4">🍽️</div>
+              <h3 class="text-xl font-semibold mb-3">Free Meals & Products</h3>
+              <p class="text-gray-600">Restaurant assignments include full meal reimbursement plus your shopping fee</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 fade-in">
+              <div class="text-primary text-3xl mb-4">🌍</div>
+              <h3 class="text-xl font-semibold mb-3">Wide Coverage</h3>
+              <p class="text-gray-600">Assignments available across North America and Australia</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 fade-in">
+              <div class="text-primary text-3xl mb-4">⏰</div>
+              <h3 class="text-xl font-semibold mb-3">Complete Flexibility</h3>
+              <p class="text-gray-600">Choose which assignments to accept - work when and where you want</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 fade-in">
+              <div class="text-primary text-3xl mb-4">📈</div>
+              <h3 class="text-xl font-semibold mb-3">Make a Difference</h3>
+              <p class="text-gray-600">Your feedback helps improve customer service across multiple industries</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 fade-in">
+              <div class="text-primary text-3xl mb-4">🏆</div>
+              <h3 class="text-xl font-semibold mb-3">Trusted Company</h3>
+              <p class="text-gray-600">A+ BBB rating with 35+ years of industry experience</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="apply" class="py-16 bg-gradient-to-r from-secondary to-gray-800 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Earning?</h2>
+          <p class="text-xl mb-8">Join thousands of mystery shoppers already earning extra income with flexible scheduling</p>
+          <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm mb-8">
+            <h3 class="text-2xl font-bold mb-4">Getting Started is 100% Free</h3>
+            <p class="text-lg mb-6">No signup fees, no hidden costs, no commitments. Create your profile and start browsing assignments immediately.</p>
+            <a
+              href="form.html"
+              class="inline-block bg-primary text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+            >
+              BECOME A SHOPPER - FREE SIGNUP
+            </a>
+          </div>
+          <p class="text-sm text-gray-300">By signing up, you'll be transferred to our CX Group Shopper Hub where you can access all available assignments.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Videos Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">Learn More About Mystery Shopping</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-50 p-4 rounded-xl shadow-lg fade-in">
+              <iframe class="w-full h-48 rounded-lg mb-4" src="https://www.youtube.com/embed/GdPq1Uf-p1E" allowfullscreen></iframe>
+              <h3 class="font-semibold text-center">Mystery Shopping Tips</h3>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-xl shadow-lg fade-in">
+              <iframe class="w-full h-48 rounded-lg mb-4" src="https://www.youtube.com/embed/5wc8PDVqRS8" allowfullscreen></iframe>
+              <h3 class="font-semibold text-center">Success Stories</h3>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-xl shadow-lg fade-in">
+              <iframe class="w-full h-48 rounded-lg mb-4" src="https://www.youtube.com/embed/Mox75fAbsgU" allowfullscreen></iframe>
+              <h3 class="font-semibold text-center">Getting Started Guide</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-      <div class="container mx-auto px-4 text-center">
-        <p class="text-sm">Contact Us:</p>
-        <p class="text-sm">Phone: <a href="tel:+12052820172" class="underline">+1 (205) 282-0172</a></p>
-        <p class="text-sm">Email: <a href="mailto:jobs@myteriousshoppers.com" class="underline">jobs@myteriousshoppers.com</a></p>
-        <p class="text-sm mt-6">&copy; 2025 Mysterious Shoppers. All rights reserved. | Privacy Policy | Cookie Policy</p>
+    <footer class="bg-secondary text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-primary">Contact Information</h3>
+              <p class="mb-2">📞 Phone: <a href="tel:+19453346439" class="hover:text-primary transition-colors">+1 (945) 334-6439</a></p>
+              <p class="mb-2">✉️ Email: <a href="mailto:jobs@myteriousshoppers.com" class="hover:text-primary transition-colors">jobs@myteriousshoppers.com</a></p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-primary">Service Areas</h3>
+              <p class="mb-2">🇺🇸 United States</p>
+              <p class="mb-2">🇨🇦 Canada</p>
+              <p class="mb-2">🇦🇺 Australia</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-primary">Company Info</h3>
+              <p class="mb-2">A+ BBB Rating</p>
+              <p class="mb-2">35+ Years Experience</p>
+              <p class="mb-2">CX Group Member</p>
+            </div>
+          </div>
+          <div class="border-t border-gray-700 pt-8 text-center">
+            <p class="text-sm text-gray-400">&copy; 2025 Mysterious Shoppers. All rights reserved. | <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a> | <a href="#" class="hover:text-primary transition-colors">Cookie Policy</a></p>
+            <p class="text-xs text-gray-500 mt-2">Mystery shopping earnings vary by assignment and individual effort. Results not guaranteed.</p>
+          </div>
+        </div>
       </div>
     </footer>
+
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Add animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in, .slide-in').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>
